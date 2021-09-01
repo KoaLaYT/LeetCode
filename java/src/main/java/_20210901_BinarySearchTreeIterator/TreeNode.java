@@ -1,4 +1,4 @@
-package _20210901_ValidateBinarySearchTree;
+package _20210901_BinarySearchTreeIterator;
 
 /**
  * @author koalayt 2021-09-01
@@ -11,7 +11,7 @@ public class TreeNode {
     TreeNode() {
     }
 
-    public TreeNode(int val) {
+    TreeNode(int val) {
         this.val = val;
     }
 
