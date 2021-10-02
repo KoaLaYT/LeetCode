@@ -1,0 +1,21 @@
+package _20211002_ReverseLinkedListII;
+
+/**
+ * @author koalayt 2021-10-02
+ */
+public class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+    }
+
+    ListNode(int val) {
+        this.val = val;
+    }
+
+    ListNode(int val, ListNode next) {
+        this.val = val;
+        this.next = next;
+    }
+}
