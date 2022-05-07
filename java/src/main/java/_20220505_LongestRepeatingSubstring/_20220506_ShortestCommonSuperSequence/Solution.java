@@ -1,4 +1,4 @@
-package _20220506_ShortestCommonSuperSequence;
+package _20220505_LongestRepeatingSubstring._20220506_ShortestCommonSuperSequence;
 
 public class Solution {
 

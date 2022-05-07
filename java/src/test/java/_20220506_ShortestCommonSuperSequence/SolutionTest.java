@@ -1,5 +1,6 @@
 package _20220506_ShortestCommonSuperSequence;
 
+import _20220505_LongestRepeatingSubstring._20220506_ShortestCommonSuperSequence.Solution;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
