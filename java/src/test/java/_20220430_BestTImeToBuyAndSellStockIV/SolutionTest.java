@@ -1,5 +1,6 @@
 package _20220430_BestTImeToBuyAndSellStockIV;
 
+import _20220517_SentenceScreenFitting._20220430_BestTImeToBuyAndSellStockIV.Solution;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

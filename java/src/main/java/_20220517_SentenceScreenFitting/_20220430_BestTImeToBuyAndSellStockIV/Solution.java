@@ -1,4 +1,4 @@
-package _20220430_BestTImeToBuyAndSellStockIV;
+package _20220517_SentenceScreenFitting._20220430_BestTImeToBuyAndSellStockIV;
 
 public class Solution {
 
