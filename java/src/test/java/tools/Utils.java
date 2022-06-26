@@ -45,6 +45,25 @@ public class Utils {
         return head;
     }
 
+    public static Pair<ListNode> buildCycleList(int[] input, int crossIndex) {
+        ListNode head = buildList(input);
+        if (crossIndex < 0) {
+            return new Pair<>(head, null);
+        }
+
+        ListNode last = head;
+        while (last.next != null) {
+            last = last.next;
+        }
+        ListNode crossNode = head;
+        while (crossIndex > 0) {
+            crossNode = crossNode.next;
+            crossIndex--;
+        }
+        last.next = crossNode;
+        return new Pair<>(head, crossNode);
+    }
+
     public static void assertListEquals(int[] expected, ListNode result) {
         int      i   = 0;
         ListNode cur = result;
@@ -55,6 +74,16 @@ public class Utils {
         }
         Assert.assertEquals(i, expected.length);
         Assert.assertNull(cur);
+    }
+
+    public static class Pair<T> {
+        public T left;
+        public T right;
+
+        Pair(T left, T right) {
+            this.left  = left;
+            this.right = right;
+        }
     }
 
 }
