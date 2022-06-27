@@ -1,12 +1,14 @@
 package tools;
 
 import common.ListNode;
+import common.TreeNode;
 import org.junit.Assert;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.*;
 
 public class Utils {
 
@@ -14,8 +16,8 @@ public class Utils {
     }
 
     public static String readFromFile(String file) {
-        InputStream   inputStream = Utils.class.getClassLoader().getResourceAsStream(file);
-        StringBuilder sb          = new StringBuilder();
+        InputStream inputStream = Utils.class.getClassLoader().getResourceAsStream(file);
+        StringBuilder sb = new StringBuilder();
         try (BufferedReader br = new BufferedReader(new InputStreamReader(inputStream))) {
             String line;
             while ((line = br.readLine()) != null) {
@@ -28,9 +30,9 @@ public class Utils {
     }
 
     public static int[] readIntArrayFromFile(String file) {
-        String   input = Utils.readFromFile(file);
-        String[] nums  = input.split(",");
-        int[]    res   = new int[nums.length];
+        String input = Utils.readFromFile(file);
+        String[] nums = input.split(",");
+        int[] res = new int[nums.length];
         for (int i = 0; i < nums.length; i++) {
             res[i] = Integer.parseInt(nums[i].trim());
         }
@@ -65,7 +67,7 @@ public class Utils {
     }
 
     public static void assertListEquals(int[] expected, ListNode result) {
-        int      i   = 0;
+        int i = 0;
         ListNode cur = result;
         while (i < expected.length && cur != null) {
             Assert.assertEquals(expected[i], cur.val);
@@ -76,12 +78,42 @@ public class Utils {
         Assert.assertNull(cur);
     }
 
+    public static void assertTreeEquals(List<Integer> expect, TreeNode result) {
+        if (expect.isEmpty()) {
+            Assert.assertNull(result);
+        }
+
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(result);
+        List<Integer> resultList = new ArrayList<>();
+
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = queue.poll();
+                if (node == null) {
+                    resultList.add(null);
+                } else {
+                    resultList.add(node.val);
+                    queue.add(node.left);
+                    queue.add(node.right);
+                }
+            }
+        }
+
+        while (!resultList.isEmpty() && resultList.get(resultList.size() - 1) == null) {
+            resultList.remove(resultList.size() - 1);
+        }
+
+        Assert.assertEquals(expect, resultList);
+    }
+
     public static class Pair<T> {
         public T left;
         public T right;
 
         Pair(T left, T right) {
-            this.left  = left;
+            this.left = left;
             this.right = right;
         }
     }
