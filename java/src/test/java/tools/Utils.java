@@ -66,6 +66,27 @@ public class Utils {
         return new Pair<>(head, crossNode);
     }
 
+    public static TreeNode buildTree(List<Integer> input) {
+        return buildTree(input, 0);
+    }
+
+    private static TreeNode buildTree(List<Integer> input, int index) {
+        if (index >= input.size()) {
+            return null;
+        }
+
+        Integer val = input.get(index);
+
+        if (val == null) {
+            return null;
+        }
+
+        TreeNode node = new TreeNode(val);
+        node.left = buildTree(input, 2 * index + 1);
+        node.right = buildTree(input, 2 * index + 2);
+        return node;
+    }
+
     public static void assertListEquals(int[] expected, ListNode result) {
         int i = 0;
         ListNode cur = result;
