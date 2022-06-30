@@ -87,6 +87,40 @@ public class Utils {
         return node;
     }
 
+    public static TreeNode[] buildTree(List<Integer> input, int p, int q, int expected) {
+        TreeNode[] nodes = new TreeNode[4];
+        TreeNode root = buildTree(input, 0, nodes, p, q, expected);
+        nodes[0] = root;
+        return nodes;
+    }
+
+    public static TreeNode buildTree(List<Integer> input, int index, TreeNode[] result, int p, int q, int expected) {
+        if (index >= input.size()) {
+            return null;
+        }
+        Integer val = input.get(index);
+
+        if (val == null) {
+            return null;
+        }
+
+        TreeNode node = new TreeNode(val);
+        node.left = buildTree(input, 2 * index + 1, result, p, q, expected);
+        node.right = buildTree(input, 2 * index + 2, result, p, q, expected);
+
+        if (val == p) {
+            result[1] = node;
+        }
+        if (val == q) {
+            result[2] = node;
+        }
+        if (val == expected) {
+            result[3] = node;
+        }
+
+        return node;
+    }
+
     public static void assertListEquals(int[] expected, ListNode result) {
         int i = 0;
         ListNode cur = result;
