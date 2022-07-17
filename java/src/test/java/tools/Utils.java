@@ -163,6 +163,17 @@ public class Utils {
         Assert.assertEquals(expect, resultList);
     }
 
+    public static void assertTreeEquals(TreeNode expected, TreeNode result) {
+        if (expected == null) {
+            Assert.assertNull(result);
+            return;
+        }
+
+        Assert.assertEquals(expected.val, result.val);
+        assertTreeEquals(expected.left, result.left);
+        assertTreeEquals(expected.right, result.right);
+    }
+
     public static class Pair<T> {
         public T left;
         public T right;
