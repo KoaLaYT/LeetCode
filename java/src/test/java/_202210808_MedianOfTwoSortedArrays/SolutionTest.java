@@ -1,5 +1,6 @@
 package _202210808_MedianOfTwoSortedArrays;
 
+import _20220808_MedianOfTwoSortedArrays.Solution;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;

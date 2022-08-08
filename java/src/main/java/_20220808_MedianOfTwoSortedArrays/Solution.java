@@ -1,4 +1,4 @@
-package _202210808_MedianOfTwoSortedArrays;
+package _20220808_MedianOfTwoSortedArrays;
 
 public class Solution {
 
